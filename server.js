@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const studentRouter = require('./routes/studentRoutes');
+require('dotenv').config();
 
 
 const PORT = 3000;
@@ -11,7 +12,7 @@ app.use(express.json());
 app.use("/student", studentRouter);
 
 mongoose.connect( 
-    "mongodb+srv://naveenmoyya01:Nanigadu1@cluster0.knwzkn0.mongodb.net/Student?retryWrites=true&w=majority",
+    process.env.DATABASE_URI,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
